@@ -1,0 +1,85 @@
+/* hrm.css */
+
+/* Main HRM page container */
+.hrm-page {
+  padding: 2rem;
+  margin-left: 18rem; /* Space for fixed sidebar */
+  min-height: 100vh; /* Full height */
+  background-color: #f8fafc; /* light background */
+  box-sizing: border-box;
+}
+
+/* Page title */
+.hrm-page h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+/* Employee list layout */
+.employee-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Individual employee card */
+.employee-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1rem 1.25rem;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.employee-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Employee card text */
+.employee-card h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+}
+
+.employee-card p {
+  font-size: 0.875rem;
+  color: #475569;
+  margin: 0;
+}
+
+/* Buttons */
+.employee-card button {
+  padding: 0.4rem 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.employee-card button:first-of-type {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.employee-card button:first-of-type:hover {
+  background-color: #2563eb;
+}
+
+.employee-card button:last-of-type {
+  background-color: #ef4444;
+  color: white;
+}
+
+.employee-card button:last-of-type:hover {
+  background-color: #dc2626;
+}

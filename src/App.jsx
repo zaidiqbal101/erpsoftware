@@ -1,41 +1,84 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Sidebar from "./components/Layout/Sidebar";
+
+// Financial Pages
+import Ledger from "./pages/Financial/Ledger";
+import Budgeting from "./pages/Financial/Budgeting";
+import Taxes from "./pages/Financial/Taxes";
+
+// Dashboard
+import Dashboard from "./pages/Dashboard/Dashboard";
+
+// HRM Pages
+import Employees from "./pages/hrm/Employees";
+import Attendance from "./pages/hrm/Attendance";
+import Payroll from "./pages/hrm/Payroll";
+import Recruitment from "./pages/hrm/Recruitment";
+
+//Secuirity
+import Security from "./pages/Security/Security";
+
+//Inventory
+import Inventory from "./pages/Inventory/Inventory";
+import AddItem from "./pages/Inventory/AddItem";
+import Vendors from "./pages/Inventory/Vendors";
+import Orders from "./pages/Inventory/Orders";
+import Shipments from "./pages/Inventory/Shipments";
+import Reports from "./pages/Inventory/Reports";
+
+// Auth
+import Login from "./pages/Auth/Login";
+import PrivateRoute from "./components/Auth/PrivateRoute";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-red-500 text-white">
-      {/* Logos */}
-      <div className="flex space-x-8 mb-8">
-        <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
-          <img src={viteLogo} className="w-20 h-20 hover:scale-110 transition-transform" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-          <img src={reactLogo} className="w-20 h-20 hover:scale-110 transition-transform" alt="React logo" />
-        </a>
-      </div>
+    <Router>
+      <Routes>
+        {/* Public Route */}
+        <Route path="/login" element={<Login />} />
 
-      <h1 className="text-4xl font-bold mb-6">Vite + React</h1>
+        {/* Protected Routes */}
+        <Route
+          path="/*"
+          element={
+            <PrivateRoute>
+              <div style={{ display: "flex" }}>
+                <Sidebar />
+                <div style={{ flex: 1 }}>
+                  <Routes>
+                    <Route path="/" element={<Navigate to="/dashboard" />} />
 
-      {/* Counter card */}
-      <div className="bg-white text-gray-800 p-6 rounded-2xl shadow-lg flex flex-col items-center space-y-4">
-        <button
-          onClick={() => setCount((count) => count + 1)}
-          className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-        >
-          count is {count}
-        </button>
-        <p className="text-gray-600">
-          Edit <code className="bg-gray-200 px-1 rounded">src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
+                    {/* Dashboard */}
+                    <Route path="/dashboard" element={<Dashboard />} />
 
-      <p className="mt-6 text-white">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+                    {/* Financial */}
+                    <Route path="/ledger" element={<Ledger />} />
+                    <Route path="/budgeting" element={<Budgeting />} />
+                    <Route path="/taxes" element={<Taxes />} />
+
+                    {/* HRM */}
+                    <Route path="/employees" element={<Employees />} />
+                    <Route path="/attendance" element={<Attendance />} />
+                    <Route path="/payroll" element={<Payroll />} />
+                    <Route path="/recruitment" element={<Recruitment />} />
+                    <Route path="/security" element={<Security />} />
+
+                  {/*Inventory*/}
+                  <Route path="/inventory" element={<Inventory />} />
+                  <Route path="/add-item" element={<AddItem />} />
+                  <Route path="/vendors" element={<Vendors />} />
+                  <Route path="/orders" element={<Orders />} />
+                  <Route path="/shipments" element={<Shipments />} />
+                  <Route path="/reports" element={<Reports />} />
+                  </Routes>
+                </div>
+              </div>
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
