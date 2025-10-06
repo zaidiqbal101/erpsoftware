@@ -19,6 +19,7 @@ import {
   Area
 } from "recharts";
 
+
 export default function Dashboard() {
   // ERP-focused stats
   const stats = [

@@ -71,6 +71,26 @@ export default function Sidebar() {
         { id: "collaboration", label: "Collaboration Tools", icon: FileText, path: "/collaboration" },
       ]
     },
+{
+  title: "Manufacturing",
+  items: [
+    { id: "bom", label: "BOM Management", icon: FileText, path: "/manufacturing/bom" },
+    { id: "production", label: "Production Planning", icon: CalendarCheck, path: "/manufacturing/production" },
+    { id: "qc", label: "Quality Control", icon: Shield, path: "/manufacturing/qc" },
+    // { id: "mfg-reports", label: "Reports & Analytics", icon: BarChart3, path: "/manufacturing/reports" },
+  ]
+},
+{
+  title: "E-commerce & POS",
+  items: [
+    { id: "online-integration", label: "Online Integration", icon: Send, path: "/ecommerce/online" },
+    { id: "pos", label: "POS Module", icon: CreditCard, path: "/ecommerce/pos" },
+  ]
+}
+
+
+
+
   ];
 
   // Account / Bottom menu
@@ -80,6 +100,7 @@ export default function Sidebar() {
     { id: "help", label: "Help Center", icon: HelpCircle, path: "/help-center" },
   ];
 
+  
   const NavItem = ({ item }) => {
     const Icon = item.icon;
     return (

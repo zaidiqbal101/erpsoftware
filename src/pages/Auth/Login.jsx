@@ -9,14 +9,16 @@ export default function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showLoadingModal, setShowLoadingModal] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
+    setShowLoadingModal(true); // Show loading modal immediately
 
-    // Simulate loading
+    // Simulate loading for 3 seconds
     setTimeout(() => {
       if (username === "flyweis" && password === "1234") {
         // Save login info in localStorage (as in original)
@@ -24,17 +26,19 @@ export default function Login() {
         localStorage.setItem("role", role);
 
         setIsLoading(false);
+        setShowLoadingModal(false); // Hide loading modal
         setShowSuccessModal(true); // Show success modal
+        
+        // Auto redirect after showing success for 1.5 seconds
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1500);
       } else {
         setError("Invalid credentials. Please try again!");
         setIsLoading(false);
+        setShowLoadingModal(false);
       }
-    }, 800);
-  };
-
-  const handleSuccessConfirm = () => {
-    setShowSuccessModal(false);
-    navigate("/dashboard");
+    }, 2000); // Changed to 2000ms (2 seconds)
   };
 
   return (
@@ -197,6 +201,24 @@ export default function Login() {
         </div>
       </div>
 
+      {/* Loading Modal */}
+      {showLoadingModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full transform scale-95 animate-in fade-in zoom-in duration-200">
+            <div className="flex flex-col items-center gap-4 text-center">
+              <div className="relative">
+                <div className="w-20 h-20 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <LogIn size={32} className="text-blue-600" />
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-800">Authenticating...</h3>
+              <p className="text-gray-600">Please wait while we verify your credentials</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Success Modal */}
       {showSuccessModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
@@ -207,13 +229,6 @@ export default function Login() {
               </div>
               <h3 className="text-2xl font-bold text-gray-800">Login Successful!</h3>
               <p className="text-gray-600">Welcome back to Flyweis Technology ERP Software. Redirecting to your dashboard...</p>
-              <button
-                onClick={handleSuccessConfirm}
-                className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center gap-2"
-              >
-                <LogIn size={18} />
-                Go to Dashboard
-              </button>
             </div>
           </div>
         </div>

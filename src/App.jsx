@@ -42,6 +42,23 @@ import Tasks from "./pages/Project/Tasks";  // Task & Milestone Tracking
 import Resources from "./pages/Project/Resources";  // Resource Allocation
 import Collaboration from "./pages/Project/Collaboration";  // Collaboration Tools
 
+// User & Role Management
+import Users from "./pages/users/Users";
+import Roles from "./pages/roles/Roles";
+
+// Manufacturing Pages
+import BOM from "./pages/Manufacturing/BOM";
+import ProductionPlanning from "./pages/Manufacturing/ProductionPlanning";
+import QualityControl from "./pages/Manufacturing/QualityControl";
+// import MFGReports from "./pages/Manufacturing/MFGReports";
+
+// Ecommerce & POS
+import OnlineIntegration from "./pages/Ecommerce/OnlineIntegration";
+import POS from "./pages/Ecommerce/POS";
+import HelpCenter from "./pages/HelpCenter/HelpCenter";
+
+import Navbar from "./components/Layout/Navbar";
+
 function App() {
   return (
     <Router>
@@ -63,6 +80,9 @@ function App() {
                     {/* Dashboard */}
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/analytics" element={<Analytics />} />
+                    {/* User & Role Management */}
+                    <Route path="/users" element={<Users />} />
+                    <Route path="/roles" element={<Roles />} />
 
                     {/* Financial */}
                     <Route path="/ledger" element={<Ledger />} />
@@ -92,6 +112,18 @@ function App() {
                   <Route path="/tasks" element={<Tasks />} />
                   <Route path="/resources" element={<Resources />} />
                   <Route path="/collaboration" element={<Collaboration />} />
+
+                  {/* Manufacturing */}
+                  <Route path="/manufacturing/bom" element={<BOM />} />
+                  <Route path="/manufacturing/production" element={<ProductionPlanning />} />
+
+                  <Route path="/manufacturing/qc" element={<QualityControl />} />
+                  {/* <Route path="/manufacturing/reports" element={<MFGReports />} /> */}
+                  {/* E-commerce & POS */}
+                  <Route path="/ecommerce/online" element={<OnlineIntegration />} />
+                  <Route path="/ecommerce/pos" element={<POS />} />
+
+    <Route path="/help-center" element={<HelpCenter />} />
                   </Routes>
                 </div>
               </div>
