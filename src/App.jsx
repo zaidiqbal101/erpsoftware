@@ -31,6 +31,11 @@ import Reports from "./pages/Inventory/Reports";
 import Login from "./pages/Auth/Login";
 import PrivateRoute from "./components/Auth/PrivateRoute";
 
+//CRM
+import Leads from "./pages/CRM/Leads";  // New: Lead & Opportunity Management
+import CustomerHistory from "./pages/CRM/CustomerHistory";  // New: Customer History & Logs
+import SalesForecasting from "./pages/CRM/SalesForecasting";
+
 function App() {
   return (
     <Router>
@@ -71,6 +76,10 @@ function App() {
                   <Route path="/orders" element={<Orders />} />
                   <Route path="/shipments" element={<Shipments />} />
                   <Route path="/reports" element={<Reports />} />
+                  {/* CRM */}
+                  <Route path="/leads" element={<Leads />} />
+                  <Route path="/crm" element={<CustomerHistory />} />
+                  <Route path="/sales" element={<SalesForecasting />} />
                   </Routes>
                 </div>
               </div>
