@@ -9,6 +9,7 @@ import Taxes from "./pages/Financial/Taxes";
 
 // Dashboard
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Analytics from "./pages/Dashboard/Analytics";
 
 // HRM Pages
 import Employees from "./pages/hrm/Employees";
@@ -36,6 +37,11 @@ import Leads from "./pages/CRM/Leads";  // New: Lead & Opportunity Management
 import CustomerHistory from "./pages/CRM/CustomerHistory";  // New: Customer History & Logs
 import SalesForecasting from "./pages/CRM/SalesForecasting";
 
+//Project Management
+import Tasks from "./pages/Project/Tasks";  // Task & Milestone Tracking
+import Resources from "./pages/Project/Resources";  // Resource Allocation
+import Collaboration from "./pages/Project/Collaboration";  // Collaboration Tools
+
 function App() {
   return (
     <Router>
@@ -56,6 +62,7 @@ function App() {
 
                     {/* Dashboard */}
                     <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/analytics" element={<Analytics />} />
 
                     {/* Financial */}
                     <Route path="/ledger" element={<Ledger />} />
@@ -80,6 +87,11 @@ function App() {
                   <Route path="/leads" element={<Leads />} />
                   <Route path="/crm" element={<CustomerHistory />} />
                   <Route path="/sales" element={<SalesForecasting />} />
+
+                  {/* Project Management */}
+                  <Route path="/tasks" element={<Tasks />} />
+                  <Route path="/resources" element={<Resources />} />
+                  <Route path="/collaboration" element={<Collaboration />} />
                   </Routes>
                 </div>
               </div>
